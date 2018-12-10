@@ -1,0 +1,19 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  koala-api.ycc.im:
+    Type: 'Aliyun::Serverless::CustomDomain'
+    Properties:
+      Protocol: HTTP
+      RouteConfig:
+        routes: 
+          '/chicken-soup':
+            serviceName: ChickenSoup
+            functionName: getChickenSoup
+          '/chicken-soup/add':
+            serviceName: ChickenSoup
+            functionName: addChickenSoup
+          '/auth/login':
+            serviceName: Login
+            functionName: loginByUsernamePassword
+  
