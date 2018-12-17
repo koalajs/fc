@@ -14,6 +14,8 @@ Resources:
             serviceName: ChickenSoup
             functionName: addChickenSoup
           '/auth/login':
-            serviceName: Login
+            serviceName: Auth
             functionName: loginByUsernamePassword
-  
+          '/node/add':
+            serviceName: Node
+            functionName: addNode

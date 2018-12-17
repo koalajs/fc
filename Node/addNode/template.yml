@@ -1,17 +1,17 @@
 ROSTemplateFormatVersion: '2015-09-01'
 Transform: 'Aliyun::Serverless-2018-04-03'
 Resources:
-  Login:
+  Node:
     Type: 'Aliyun::Serverless::Service'
     Properties:
       Role: acs:ram::1193122803419277:role/AliyunFC-cn-shenzhen
       LogConfig:
         Project: 'yccim'
         Logstore: 'koala'
-    loginByUsernamePassword:
+    addNode:
       Type: 'Aliyun::Serverless::Function'
       Properties:
-        Description: '通过用户名和密码完成认证'
+        Description: '增加权限节点'
         Handler: index.handler
         Runtime: nodejs8
         CodeUri: './'
@@ -22,4 +22,4 @@ Resources:
           Type: HTTP
           Properties:
             AuthType: ANONYMOUS
-            Methods: ['POST', 'GET']
+            Methods: ['POST']

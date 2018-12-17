@@ -1,9 +1,11 @@
 {
-  "name": "loginByUsernamePassword",
-  "version": "0.0.3",
-  "description": "通过用户名和密码完成认证",
+  "name": "addNode",
+  "version": "0.0.1",
+  "description": "增加权限节点",
   "main": "index.js",
   "scripts": {
+    "start": " ews && fun local invoke Node/addNode",
+    "local": "fun local invoke Node/addNode",
     "release": "standard-version",
     "eslint": "esw -w --clear",
     "test": "jest --watch"
@@ -11,12 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@koala.js/fc.utils": "0.0.5",
-    "crypto-js": "^3.1.9-1",
-    "jsonwebtoken": "^8.4.0",
-    "ramda": "^0.26.1",
+    "@koala.js/fc.utils": "0.0.6",
     "standard-version": "^4.4.0",
-    "tablestore": "^4.0.14"
+    "tablestore": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^5.10.0",
