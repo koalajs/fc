@@ -16,6 +16,12 @@ Resources:
           '/auth/login':
             serviceName: Auth
             functionName: loginByUsernamePassword
+          '/node':
+            serviceName: Node
+            functionName: nodeList
           '/node/add':
             serviceName: Node
-            functionName: addNode
+            functionName: nodeAdd
+          '/node/delete':
+            serviceName: Node
+            functionName: nodeDelete

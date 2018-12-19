@@ -1,0 +1,25 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  Node:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Role: acs:ram::1193122803419277:role/AliyunFC-cn-shenzhen
+      LogConfig:
+        Project: 'yccim'
+        Logstore: 'koala'
+    nodeAdd:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Description: '增加节点'
+        Handler: index.handler
+        Runtime: nodejs8
+        CodeUri: './'
+        Timeout: 30
+        MemorySize: 128
+      Events:
+        eventLoginByUsernameAndPassword:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods: ['POST']

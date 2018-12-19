@@ -1,0 +1,28 @@
+{
+  "name": "nodeDelete",
+  "version": "0.0.1",
+  "description": "删除节点",
+  "main": "index.js",
+  "scripts": {
+    "start": "esw && fun local invoke Node/nodeDelete",
+    "local": "fun local invoke Node/nodeDelete",
+    "release": "standard-version",
+    "eslint": "esw -w --clear",
+    "test": "jest --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "standard-version": "^4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-watch": "^4.0.2",
+    "jest": "^23.6.0"
+  }
+}
