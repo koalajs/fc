@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@koala.js/fc.utils": "0.0.7",
+    "@koala.js/ts-orm": "^0.3.0",
     "standard-version": "^4.4.0"
   },
   "devDependencies": {
