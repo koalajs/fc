@@ -1,0 +1,21 @@
+{
+  "name": "level",
+  "version": "0.0.1",
+  "description": "修改用户等级",
+  "main": "index.js",
+  "scripts": {
+    "start": "esw && fun local invoke User/Level",
+    "local": "fun local invoke User/Level",
+    "release": "standard-version",
+    "eslint": "esw -w --clear",
+    "test": "jest --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koala.js/fc.utils": "0.0.11",
+    "@koala.js/ts-orm": "^0.3.3",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.0"
+  }
+}

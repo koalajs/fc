@@ -16,6 +16,15 @@ Resources:
           '/auth/login':
             serviceName: Auth
             functionName: loginByUsernamePassword
+          '/auth/login-by-up':
+            serviceName: Auth
+            functionName: loginByUP
+          '/auth/login-by-phone':
+            serviceName: Auth
+            functionName: loginByPhone
+          '/register/up':
+            serviceName: Register
+            functionName: registerByUP
           '/node':
             serviceName: Node
             functionName: nodeList
@@ -25,3 +34,9 @@ Resources:
           '/node/delete':
             serviceName: Node
             functionName: nodeDelete
+          '/group':
+            serviceName: Group
+            functionName: groupList
+          '/user/level':
+            serviceName: User
+            functionName: level

@@ -40,6 +40,7 @@ const isRegistered = (d) => R.isEmpty(d.row)
 const checkRegister = (d) => {
   return new Promise((resolve, reject) => {
     const ts1 = R.clone(ts.orm)
+    console.log('im here')
     ts1.table('Auth')
       .versions(1)
       .keys({

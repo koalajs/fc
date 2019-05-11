@@ -9,16 +9,20 @@ const R = require('ramda')
 const utils = require('@koala.js/fc.utils')
 const orm = require('@koala.js/fc.utils/ts-orm')
 const config = require('./config')
-const TableStore = require('tablestore')
 const jwt = require('jsonwebtoken')
 const CryptoJS = require('crypto-js')
 
 const handler = async function (req, rep, ctx) {
   const data = await utils.getBody(req)
   // 检查数据合法性
-  checkData(data) || utils.httpSend(rep, { errorMessage: '手机号和密码是必须的' }, 403)
+  checkData(data) || utils.httpSend(rep, { errorMessage: '用户名和密码是必须的' }, 403)
   // 获取数据 from tablestore
-  const result = await orm.getRow.init(config.table).table('Auth').select('password', 'username').keys({ tk: 'up', id: data.phone}).find()
+  const result = await orm.getRow
+    .init(config.table)
+    .table('Auth')
+    .select('user_id')
+    .keys({ tk: 'user_up', id: data.user })
+    .find()
   // console.log('is right result', result)
   const row = orm.formatRow(result.row)
   // 检查帐号
@@ -26,7 +30,7 @@ const handler = async function (req, rep, ctx) {
   // 检查密码是否正确
   checkPassword(rep, row, data.password)
   // 得到Token
-  const token = getToken(rep, data.phone)
+  const token = getToken(rep, data.user)
   // 检查Token
   checkToken(rep, token)
   // 发送Token
@@ -41,10 +45,10 @@ const checkToken = (rep, token) => {
   R.isNil(token.data) && utils.httpSend(rep, '生成Token失败')
 }
 
-const getToken = (rep, phone) => {
+const getToken = (rep, userID) => {
   try {
     const token = jwt.sign({
-      data: phone,
+      data: userID,
       exp: Math.floor(Date.now() / 1000) + (60 * 60)
     }, config.secret.key)
     return { data: token, err: null }
@@ -66,15 +70,8 @@ const checkAccount = (rep, row) => {
   R.isEmpty(row) && utils.httpSend(rep, { errorMessage: '帐号不存在' }, 403)
 }
 
-const checkErr = (rep, row) => {
-  if (R.isEmpty(row)) {
-    console.log('Login:loginByUserPassword:TableStore Error', row)
-    utils.httpSend(rep, { errorMessage: '数据库访问出错' })
-  }
-}
-
 const checkData = (d) => {
-  return R.and(R.has('phone', d), R.has('password', d))
+  return R.and(R.has('user', d), R.has('password', d))
 }
 
 module.exports = {

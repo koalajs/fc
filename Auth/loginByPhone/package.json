@@ -1,0 +1,15 @@
+{
+  "name": "loginByPhone",
+  "version": "0.0.1",
+  "description": "手机号登录",
+  "main": "index.js",
+  "scripts": {
+    "start": "esw && fun local invoke Auth/loginByPhone",
+    "local": "fun local invoke Auth/loginByPhone",
+    "release": "standard-version",
+    "eslint": "esw -w --clear",
+    "test": "jest --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "GoTest",
+  "version": "0.0.1",
+  "description": "test for golang",
+  "main": "index.js",
+  "scripts": {
+    "start": "esw && fun local invoke Test/GoTest",
+    "local": "fun local invoke Test/GoTest",
+    "release": "standard-version",
+    "eslint": "esw -w --clear",
+    "test": "jest --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
